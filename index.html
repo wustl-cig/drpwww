@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A Restoration Network as an Implicit Prior">
+    <meta name="author" content="Yuyang Hu, Mauricio Delbracio, Peyman Milanfar, Ulugbek S. Kamilov">
+
+    <title>A Restoration Network as an Implicit Prior</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="src/css/style.css">
+
+</head>
+
+<body>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2>A Restoration Network as an Implicit Prior</h2> 
+    <p class="abstract"><b>Deep Restoration Priors (DRP) is a new method for using pre-trained restoration models as priors for inverse problems </b></p>
+    <hr>
+    <p class="authors">
+        <a href="https://hu-yuyang.github.io">Yuyang Hu<sup>1</sup></a>,
+	<a href="https://mdelbra.github.io/">Mauricio Delbracio<sup>2</sup></a>,
+        <a href="https://sites.google.com/view/milanfarhome/home">Peyman Milanfar<sup>2</sup></a>,
+        <a href="https://engineering.wustl.edu/faculty/Ulugbek-Kamilov.html">Ulugbek S. Kamilov<sup>1,2</sup></a></br>
+    </p>
+    <p>
+        <a><sup>1</sup>Washington University in St. Louis, St. Louis, MO, USA</a></br>
+        <a><sup>2</sup>Google Research</a></br>
+    </p>
+
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://arxiv.org/abs/2310.01391">Preprint</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+    <h2>Abstract </h2>
+	      <hr>
+        <p>
+            Image denoisers have been shown to be powerful priors for solving inverse problems in imaging. In this work, we introduce a generalization of these methods that allows any image restoration network to beused as an implicit prior. The proposed method uses priors specified by deep neural networks pre-trained as general restoration operators. The method provides a principled approach for adapting state-of-the-art restoration models for other inverse problems.  Our theoretical result analyzes its convergence to a stationary point of a global functional associated with the restoration operator. Numerical results showthat the method using a super-resolution prior achieves state-of-the-art performance both quantitatively and qualitatively. Overall, this work offers a step forward for solving inverse problems by enabling the use of powerful pre-trained restoration models as priors.
+    </div>
+    <div class="section">
+    <h2>DRP for Image Deblurring</h2>
+        <div class="row align-items-center">
+			<div class="col justify-content-center text-center">
+                <img src="img/deblur_results.jpg" style="width:90%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 1:</b> Visual comparison of DRP with several well-known methods on Gaussian deblurring of color images. Note how DRP using restoration prior improves over SOTA methods based on denoiser priors.</p>
+            </div>
+        </div>
+    <div class="section">
+    <h2>DRP for Single Image Super Resolution </h2>
+
+        <div class="row align-items-center">
+			<div class="col justify-content-center text-center">
+                <img src="img/sisr_results.jpg" style="width:90%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 2:</b> Visual comparison of DRP and several well-known methods on single image super resolution. Note the excellent performance of the proposed DRP method using the SwinIR prior both visually and in terms of PSNR.</p>
+            </div>
+        </div>
+        <br>
+    <div class="section">
+        <h2>Convergence Behaviour of DRP</h2>
+        <hr>
+        <div class="row align-items-center">
+			<div class="col justify-content-center text-center">
+                <img src="img/convergence_curve.jpg" style="width:90%" alt="Banner">
+                <p><b>Figure 3:</b> llustration of the convergence behaviour of DRP for image deblurring and single image superresolution on the Set3c dataset. (a)-(b): Deblurring with Gaussian blur kernels of standard deviations 1.6 and 2.0. (c)-(d):2× and 3× super resolution with the Gaussian blur kernel of standard deviation 2.0. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Illustration of the Prior Refinement Strategy</h2>
+        <hr>
+
+        <div class="row align-items-center">
+			<div class="col justify-content-center text-center">
+                <img src="img/convergence_leave_demo.jpg" style="width:87%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 4:</b> Illustration of the impact of different SR factors in the prior used within DRP for image deblurring. We show three scenarios: (i) using only 3× prior, (ii) using only 2× prior, and (iii) the use of the prior refinement strategy, which combines both the 2× and 3× priors. Left: Convergence of PSNR against the iteration number for all three configurations. Right: Visual illustration of the final image for each setting. The visual difference is highlighted by the red arrow in the zoom-in box. Note how the reduction of q can lead to about 0.3 dB improvement in the final performance. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>DRP for Image Denoising</h2>
+        <hr>
+    </div>
+
+    <div class="section">
+        <div class="row align-items-center">
+            <div class="col justify-content-center text-center">
+                <img src="img/denoise_0.1_vs_Unet_cbsd68.jpg" style="width:90%" alt="Banner">
+                <p style="text-align: justify;"><b>Figure 6:</b>  llustration of denoising results of DRP on CBSD68 dataset with noise level σ= 0.1. Each image is labeled by its PSNR (dB) with respect to the original image.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Paper</h2>
+        <hr>
+        <div>
+            <div class="list-group">
+                <a href="https://arxiv.org/abs/2310.01391"
+                   class="list-group-item">
+                    <img src="img/paper_view.jpg" style="width:100%; margin-right:-20px; margin-top:-10px;">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+            @article{hu2023restoration,
+                author={Yuyang Hu 
+		          and Mauricio Delbracio 
+		          and Peyman Milanfar 
+		          and Ulugbek S. Kamilov},
+                title={A Restoration Network as an Implicit Prior},
+                note={arXiv:2310.01391},
+                year={2023}
+              }
+        </div>
+    </div>
+    
+    <hr>
+
+</div>
+</body>
+</html>
